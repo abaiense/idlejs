@@ -1,49 +1,96 @@
 var poder = parseInt($("#poder").text());
 var banco = parseInt($("#banco").text());
+var idle = parseInt($("#idle").text());
 
 
 var trabalhador = $(".trabalhador").text();
 var valorTrabalhador = $(".valor-trabalhador").text();
 
-$("#btn-click").click(function(){
-    var poder = parseInt($("#poder").text());
 
-    banco += poder;
-
-    $("#banco").text(banco);
+$(document).ready(function(){
+    cliqueTap();
+    comprarFerramenta();
+    comprarTrabalhador();
+    contadorTrabalhador();
 });
 
-$("#btn-comprarFerramenta").click(function(){
 
-    var ferramentas = parseInt($(".ferramentas").text());
-    var valorFerramenta = parseInt($(".valor-ferramenta").text());    
+function cliqueTap(){
+    $("#btn-click").click(function(){
+        var poder = parseInt($("#poder").text());
     
-    if (banco >= valorFerramenta){
-
-        banco -= valorFerramenta;
-        ferramentas++
-
+        banco += poder;
+    
         $("#banco").text(banco);
-        $(".ferramentas").text(ferramentas);
+    });    
+}
+
+function comprarFerramenta(){
+    $("#btn-comprarFerramenta").click(function(){
+
+        var ferramentas = parseInt($(".ferramentas").text());
+        var valorFerramenta = parseFloat($(".valor-ferramenta").text());    
         
-        var updateFerramenta = parseInt($(".ferramentas").text());
-        $("#poder").text(poder + updateFerramenta);
-        console.log("Quantidade ferramentas: " + updateFerramenta);
+        if (banco >= valorFerramenta){
+            
+            var updateFerramenta = parseInt($(".ferramentas").text());
+            
+            banco -= valorFerramenta;
+            $("#banco").text(banco);
 
-        valorFerramenta = valorFerramenta + (valorFerramenta * 10/100 * updateFerramenta);
+            ferramentas++
+            $(".ferramentas").text(ferramentas);
+    
+            valorFerramenta = valorFerramenta * 1.1;
+            $(".valor-ferramenta").text(valorFerramenta);
+            
+            
+            $("#poder").text(poder + updateFerramenta);
+            
+        } else {
+            console.log("valor insuficiente");
+        }
+    
+        console.log(banco);
+    
+    });
+}
 
-        $(".valor-ferramenta").text(valorFerramenta);
+function comprarTrabalhador(){
+    $("#btn-comprarTrabalhador").click(function(){
 
-        console.log("Valor Ferramenta: " + valorFerramenta);
-
-
+        var trabalhador = parseInt($(".trabalhador").text());
+        var valorTrabalhador = parseFloat($(".valor-trabalhador").text());    
         
-    } else {
-        console.log("valor insuficiente");
-    }
+        if (banco >= valorTrabalhador){
+            
+            var updateTrabalhador = parseInt($(".trabalhador").text());
+            
+            banco -= valorTrabalhador;
+            $("#banco").text(banco);
 
-    console.log(banco);
+            trabalhador++
+            $(".trabalhador").text(trabalhador);
+    
+            valorTrabalhador = valorTrabalhador * 1.1;
+            $(".valor-trabalhador").text(valorTrabalhador);
+            
+            
+            $("#idle").text(idle + updateTrabalhador);
+            
+        } else {
+            console.log("valor insuficiente");
+        }
+    
+        console.log(banco);
+    
+    });
+}
 
-
-
-});
+function contadorTrabalhador(){
+    setInterval(() => {
+        banco += idle;
+    
+        $("#banco").text(banco);
+    }, 1000);
+}
