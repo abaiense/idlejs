@@ -2,16 +2,11 @@ var poder = parseInt($("#poder").text());
 var banco = parseInt($("#banco").text());
 var idle = parseInt($("#idle").text());
 
-
-var trabalhador = $(".trabalhador").text();
-var valorTrabalhador = $(".valor-trabalhador").text();
-
-
 $(document).ready(function(){
     cliqueTap();
-    comprarFerramenta();
-    comprarTrabalhador();
-    contadorTrabalhador();
+    InfinityLoop();
+    comprarUpgrade("#btn-comprarFerramenta", ".ferramentas", ".valor-ferramenta", "#poder");
+    comprarUpgrade("#btn-comprarTrabalhador", ".trabalhador", ".valor-trabalhador", "#idle");
 });
 
 
@@ -20,11 +15,24 @@ function cliqueTap(){
         var poder = parseInt($("#poder").text());
     
         banco += poder;
+        banco.toFixed(2);
     
         $("#banco").text(banco);
     });    
 }
 
+function InfinityLoop(){
+
+    setInterval(() => {
+        var idle = parseFloat($("#idle").text());
+        banco = banco + idle;
+        banco.toFixed(2);
+
+        $("#banco").text(banco);
+    }, 100);
+}
+
+/*
 function comprarFerramenta(){
     $("#btn-comprarFerramenta").click(function(){
 
@@ -86,11 +94,28 @@ function comprarTrabalhador(){
     
     });
 }
+*/
 
-function contadorTrabalhador(){
-    setInterval(() => {
-        banco += idle;
-    
-        $("#banco").text(banco);
-    }, 1000);
+function comprarUpgrade(nomeUpgrade, idQuantidade, preco, campoUpdate){
+    $(nomeUpgrade).click(() => {
+        var quantidade = parseInt($(idQuantidade).text());
+        var valorQuantidade = parseInt($(preco).text());
+
+        if (banco >= valorQuantidade){
+
+            banco -= valorQuantidade;
+            banco.toFixed(2);
+
+            $("#banco").text(banco);
+
+            quantidade++
+            $(idQuantidade).text(quantidade);
+
+            valorQuantidade = valorQuantidade * 1.1;
+            $(preco).text(valorQuantidade.toFixed(2));
+
+            $(campoUpdate).text(idle + quantidade);
+
+        }
+    });
 }
