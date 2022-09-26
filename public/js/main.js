@@ -30,14 +30,14 @@ var poder = parseInt($("#poder").text());
 var banco = parseInt($("#banco").text());
 var idle = parseInt($("#idle").text());
 
-$(document).ready(function(){
-    cliqueTap();
-    InfinityLoop();
+// $(document).ready(function(){
+//     cliqueTap();
+//     InfinityLoop();
 
-    testeUpgrade(ferramenta);
-    testeUpgrade(trabalhador);
-    // comprarUpgrade("#btn-comprarTrabalhador", ".trabalhador", ".valor-trabalhador", "#idle");
-});
+//     testeUpgrade(ferramenta);
+//     testeUpgrade(trabalhador);
+//     // comprarUpgrade("#btn-comprarTrabalhador", ".trabalhador", ".valor-trabalhador", "#idle");
+// });
 
 
 function cliqueTap(){
@@ -59,7 +59,7 @@ function InfinityLoop(){
         banco.toFixed(2);
 
         $("#banco").text(banco);
-    }, 1);
+    }, 1000);
 }
 
 /*

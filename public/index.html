@@ -6,38 +6,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <div class="container">
-        <p>Poder: <span id="poder" data-poder="1">1</span></p>
-        <p>Idle: <span id="idle">0</span></p>
-        <p>Banco: <span id="banco">0</span></p>
-        
-        <br><br><br>
 
-        <div id="btn-click">
-            TAP
-        </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table">
+                    <tbody>
 
-        <div>
-            <h1>Ferramentas</h1>
-            <p>
-                Comprar ferramentas: <span class="ferramentas">0</span>
-                <span id="btn-comprarFerramenta">comprar valor: <span class="valor-ferramenta" >10</span></span>
-            </p>
+                      <tr>
+                        <th scope="row">Banco: </th>
+                        <td data-banco="" class="banco">0</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Poder Clique: </th>
+                        <td data-poderClique="1" class="poderClique">1</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Poder Gerado: </th>
+                        <td data-poderTotalGerado="" class="poderTotalGerado">0</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+            </div>
         </div>
-        <div>
-            <h1>Trabalhador</h1>
-            <p>
-                Comprar trabalhador: <span class="trabalhador">0</span>
-                <span id="btn-comprarTrabalhador">comprar valor: <span class="valor-trabalhador" >20</span></span>
-            </p>
+        <div id="tabButton">TAP</div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nome:</th>
+                        <th scope="col">Quantidade:</th>
+                        <th scope="col">Poder Gerado:</th>
+                        <th scope="col">Upgrades:</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Poder</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr id="clique">
+                        <th scope="row">Clique</th>
+                        <td data-quantidade="0" class="quantidade">0</td>
+                        <td data-poderGerado="" class="poderGerado">0</td>
+                        <td class="d-flex upgrades">
+                            <div class="skillBtn upgrade-01" data-upgradeUm="false">A</div>
+                            <div class="skillBtn upgrade-02" data-upgradeDois="false">B</div>
+                            <div class="skillBtn upgrade-03" data-upgradeTres="false">C</div>
+                            <div class="skillBtn upgrade-04" data-upgradeQuatro="false">D</div>
+                        </td>
+                        <td data-preco="" class="preco">15</td>
+                        <td data-poder="" class="poder">10</td>
+                        <td class="">
+                            <div class="btnComprar">Comprar</div>
+                        </td>
+                      </tr>
+
+                      <tr id="guerreiro">
+                        <th scope="row">Guerreiro</th>
+                        <td data-quantidade="0" class="quantidade">0</td>
+                        <td data-poderGerado="" class="poderGerado">0</td>
+                        <td class="d-flex upgrades">
+                            <div class="skillBtn upgrade-01" data-upgradeUm="false">A</div>
+                            <div class="skillBtn upgrade-02" data-upgradeDois="false">B</div>
+                            <div class="skillBtn upgrade-03" data-upgradeTres="false">C</div>
+                            <div class="skillBtn upgrade-04" data-upgradeQuatro="false">D</div>
+                        </td>
+                        <td data-preco="" class="preco">100</td>
+                        <td data-poder="" class="poder">1000</td>
+                        <td class="">
+                            <div class="btnComprar">Comprar</div>
+                        </td>
+                      </tr>
+
+
+                      <tr id="arqueiro">
+                        <th scope="row">Arqueiro</th>
+                        <td data-quantidade="0" class="quantidade">0</td>
+                        <td data-poderGerado="" class="poderGerado">0</td>
+                        <td class="d-flex upgrades">
+                            <div class="skillBtn upgrade-01" data-upgradeUm="false">A</div>
+                            <div class="skillBtn upgrade-02" data-upgradeDois="false">B</div>
+                            <div class="skillBtn upgrade-03" data-upgradeTres="false">C</div>
+                            <div class="skillBtn upgrade-04" data-upgradeQuatro="false">D</div>
+                        </td>
+                        <td data-preco="" class="preco">100</td>
+                        <td data-poder="" class="poder">1000</td>
+                        <td class="">
+                            <div class="btnComprar">Comprar</div>
+                        </td>
+                      </tr>
+
+                      <tr id="mago">
+                        <th scope="row">Mago</th>
+                        <td data-quantidade="0" class="quantidade">0</td>
+                        <td data-poderGerado="" class="poderGerado">0</td>
+                        <td class="d-flex upgrades">
+                            <div class="skillBtn upgrade-01" data-upgradeUm="false">A</div>
+                            <div class="skillBtn upgrade-02" data-upgradeDois="false">B</div>
+                            <div class="skillBtn upgrade-03" data-upgradeTres="false">C</div>
+                            <div class="skillBtn upgrade-04" data-upgradeQuatro="false">D</div>
+                        </td>
+                        <td data-preco="" class="preco">100</td>
+                        <td data-poder="" class="poder">1000</td>
+                        <td class="">
+                            <div class="btnComprar">Comprar</div>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+            </div>
         </div>
     </div>
 
 
     <script src="js/jquery.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+
+    <script src="js/data.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/global.js"></script>
 </body>
 </html>
