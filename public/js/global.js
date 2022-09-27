@@ -42,12 +42,15 @@ function InfinityLoop(){
         global.values.banco.toFixed(2);
 
         $(global.classe.banco).text(global.values.banco);
+
+        upgradesBuy();
+        updateCampos();
     }, 1000);
 }
 
 function comprarUpgradeClique(){
     $(clique.classe.btnComprar).click(() => {
-        
+
         if (global.values.banco >= clique.values.preco){
 
             global.values.banco -= clique.values.preco;
@@ -96,6 +99,44 @@ function comprarUpgradeWorker(i){
         }
     });
 }
+
+function upgradesBuy(){
+    $(clique.classe.upgrades.primeiro).addClass("disable");
+    $(clique.classe.upgrades.segundo).addClass("disable");
+    $(clique.classe.upgrades.terceiro).addClass("disable");
+    $(clique.classe.upgrades.quarto).addClass("disable");
+
+    if (global.values.banco >= clique.values.upgrades.price.primeiro){
+
+        $(clique.classe.upgrades.primeiro).removeClass("disable");
+        clique.values.upgrades.values.primeiro = true;
+
+        if (clique.values.upgrades.values.primeiro = true){
+
+             $(clique.classe.upgrades.primeiro).click(function(){
+
+                var power = clique.values.poder * 2;
+
+                $(clique.classe.poder).text(power);
+
+             });
+
+        }
+
+    } else {
+
+        clique.values.upgrades.values.primeiro = false;
+
+    }
+}
+
+function updateCampos(){
+    $(clique.classe.poder).text(clique.values.poder);
+    $(clique.classe.preco).text(clique.values.preco);
+    $(clique.classe.quantidade).text(clique.values.quantidade);
+    $(clique.classe.poderGerado).text(clique.values.poderGerado);
+}
+
 
 console.log("teste");
 

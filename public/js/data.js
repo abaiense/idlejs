@@ -32,10 +32,18 @@ var clique = {
         preco: 15,
         poder: 10,
         upgrades: {
-            primeiro: false,
-            segundo: false,
-            terceiro: false,
-            quarto: false
+            values : {
+                primeiro: false,
+                segundo: false,
+                terceiro: false,
+                quarto: false
+            },
+            price : {
+                primeiro: 100,
+                segundo: 200,
+                terceiro: 500,
+                quarto: 1000
+            }
         }    
     }
 }
