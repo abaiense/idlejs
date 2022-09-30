@@ -43,6 +43,18 @@ var clique = {
                 segundo: 200,
                 terceiro: 500,
                 quarto: 1000
+            },
+            upgradePower : {
+                primeiro: 2,
+                segundo: 2,
+                terceiro: 4,
+                quarto: 10
+            },
+            comprado : {
+                primeiro: false,
+                segundo: false,
+                terceiro: false,
+                quarto: false
             }
         }    
     }

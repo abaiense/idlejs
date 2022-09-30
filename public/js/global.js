@@ -38,7 +38,7 @@ function InfinityLoop(){
 
         $(global.classe.banco).text(global.values.banco);
 
-        upgradesBuy();
+        upgradesBuy(clique);
         updateCampos();
     }, 1000);
 }
@@ -95,33 +95,69 @@ function comprarUpgradeWorker(i){
     });
 }
 
-function upgradesBuy(){
+function upgradesBuy(i){
 
-    verificaUpgradeComprado(clique);
+    Object.keys(i.values.upgrades.price).forEach((keys) => {
 
-    if (global.values.banco >= clique.values.upgrades.price.primeiro){
-        $(clique.classe.upgrades.primeiro).removeClass("disable");
-        
-        $(clique.classe.upgrades.primeiro).click(function(){
-            var power = clique.values.poder * 2;
-            clique.values.upgrades.values.primeiro = true;
+        if (global.values.banco >= i.values.upgrades.price[keys]){
+            
+            $(i.classe.upgrades[keys]).removeClass("disable");
+            
+            i.values.upgrades.values[keys] = true;
 
-            $(clique.classe.poder).text(power);
+            console.log("teste values antes: " + i.values.upgrades.values[keys]);
+            console.log("teste comprado antes: " + i.values.upgrades.comprado[keys]);
+            if (i.values.upgrades.values[keys] == true & i.values.upgrades.comprado[keys] == false) {
+               
+                $(i.classe.upgrades[keys]).click(function(){
 
-        });
+                    i.values.upgrades.comprado[keys] = true;
 
-    } else {
-        clique.values.upgrades.values.primeiro = false;
-    }
+                    var power = i.values.poder * clique.values.upgrades.upgradePower[keys];
+            
+                    i.values.poder = power;
+            
+                    console.log("teste ->" + i.values.poder);
+                    
+                    $(i.classe.poder).text(power);
+
+                    console.log("teste values depois: " + i.values.upgrades.values[keys]);
+                    console.log("teste comprado depois: " + i.values.upgrades.comprado[keys]);
+            
+                });
+
+            }
+    
+        } else {
+            clique.values.upgrades.values[keys] = false;
+        }
+
+    });
+
+    verificaUpgradeComprado(i);
+
 }
 
 function verificaUpgradeComprado(i){
-    if (i.values.upgrades.values.primeiro == true){
-        $(i.classe.upgrades.primeiro).removeClass("disable");
-        $(i.classe.upgrades.primeiro).addClass("upgradeComprado");
-    } else {
-        $(clique.classe.upgrades.primeiro).addClass("disable");
-    }
+
+    Object.keys(i.values.upgrades.values).forEach((key) => {
+
+        if (i.values.upgrades.values[key] == true){
+            $(i.classe.upgrades[key]).removeClass("disable");
+        } else {
+            $(clique.classe.upgrades[key]).addClass("disable");
+        }
+        
+    });
+
+    Object.keys(i.values.upgrades.comprado).forEach((key) => {
+
+        if (i.values.upgrades.comprado[key] == true){
+            $(i.classe.upgrades[key]).addClass("upgradeComprado");
+        };
+        
+    });
+
 }
 
 function updateCampos(){
