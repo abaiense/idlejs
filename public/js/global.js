@@ -14,11 +14,6 @@ $(document).ready(function(){
 
 });
 
-// $(clique.classe.preco).text(clique.values.preco);
-// $(clique.classe.poder).text(clique.values.poder);
-// $(guerreiro.classe.preco).text(guerreiro.values.preco);
-// $(guerreiro.classe.poder).text(guerreiro.values.poder);
-
 function inicializarCampos(i){
     $(i.classe.preco).text(i.values.preco);
     $(i.classe.poder).text(i.values.poder);
@@ -101,45 +96,37 @@ function comprarUpgradeWorker(i){
 }
 
 function upgradesBuy(){
-    $(clique.classe.upgrades.primeiro).addClass("disable");
-    $(clique.classe.upgrades.segundo).addClass("disable");
-    $(clique.classe.upgrades.terceiro).addClass("disable");
-    $(clique.classe.upgrades.quarto).addClass("disable");
+
+    verificaUpgradeComprado(clique);
 
     if (global.values.banco >= clique.values.upgrades.price.primeiro){
-
         $(clique.classe.upgrades.primeiro).removeClass("disable");
-        clique.values.upgrades.values.primeiro = true;
+        
+        $(clique.classe.upgrades.primeiro).click(function(){
+            var power = clique.values.poder * 2;
+            clique.values.upgrades.values.primeiro = true;
 
-        if (clique.values.upgrades.values.primeiro = true){
+            $(clique.classe.poder).text(power);
 
-             $(clique.classe.upgrades.primeiro).click(function(){
-
-                var power = clique.values.poder * 2;
-
-                $(clique.classe.poder).text(power);
-
-             });
-
-        }
+        });
 
     } else {
-
         clique.values.upgrades.values.primeiro = false;
+    }
+}
 
+function verificaUpgradeComprado(i){
+    if (i.values.upgrades.values.primeiro == true){
+        $(i.classe.upgrades.primeiro).removeClass("disable");
+        $(i.classe.upgrades.primeiro).addClass("upgradeComprado");
+    } else {
+        $(clique.classe.upgrades.primeiro).addClass("disable");
     }
 }
 
 function updateCampos(){
     $(clique.classe.poder).text(clique.values.poder);
-    $(clique.classe.preco).text(clique.values.preco);
+    $(clique.classe.preco).text(clique.values.preco.toFixed(2));
     $(clique.classe.quantidade).text(clique.values.quantidade);
     $(clique.classe.poderGerado).text(clique.values.poderGerado);
 }
-
-
-console.log("teste");
-
-// ferramenta.upgrade.primeiro
-// var teste = $("#poder").data("poder");
-// console.log(teste);

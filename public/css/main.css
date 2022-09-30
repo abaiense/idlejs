@@ -60,3 +60,7 @@ body{
 .disable{
     background-color: slategrey;
 }
+
+.upgradeComprado{
+    background-color: green;
+}
