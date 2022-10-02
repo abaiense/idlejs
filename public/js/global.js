@@ -105,8 +105,6 @@ function upgradesBuy(i){
             
             i.values.upgrades.values[keys] = true;
 
-            console.log("teste values antes: " + i.values.upgrades.values[keys]);
-            console.log("teste comprado antes: " + i.values.upgrades.comprado[keys]);
             if (i.values.upgrades.values[keys] == true & i.values.upgrades.comprado[keys] == false) {
                
                 $(i.classe.upgrades[keys]).click(function(){
@@ -126,10 +124,12 @@ function upgradesBuy(i){
             
                 });
 
-            }
+            } 
     
         } else {
-            clique.values.upgrades.values[keys] = false;
+
+            i.values.upgrades.values[keys] = false;
+            
         }
 
     });
